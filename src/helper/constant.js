@@ -1,0 +1,1 @@
+export const COINGECKO_API_URL = "api.coingecko.com/api/v3";
