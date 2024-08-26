@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchCoinData } from "../../services/fetchCoinData";
 import { useQuery } from "react-query";
+import { CurrencyContext } from "../../context/currencyContext";
 
-function CoinTable({currency}){
+function CoinTable(){
     // useEffect(()=>{
     //     console.log("useEffect Mounted")
     //     fetchCoinData();
     // },[])// second argument is the dependency array that means that on which all elements rerender this effect will be produced
     
     const[page,setPage] = useState(1);
+    
+    const {currency} =  useContext(CurrencyContext); 
+
     const {data,isLoading,isError,error} = useQuery(['coins', page,currency], () => fetchCoinData(page,currency), {
         // retry: 2,
         // retryDelay: 1000,
