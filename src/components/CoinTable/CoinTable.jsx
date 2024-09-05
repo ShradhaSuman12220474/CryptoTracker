@@ -3,6 +3,7 @@ import { fetchCoinData } from "../../services/fetchCoinData";
 import { useQuery } from "react-query";
 import { CurrencyContext } from "../../context/currencyContext";
 import currencyStore from'../../state/store';
+import { useNavigate } from "react-router-dom";
 
 function CoinTable(){
     // useEffect(()=>{
@@ -12,6 +13,7 @@ function CoinTable(){
     
     const[page,setPage] = useState(1);
     
+    const navigate = useNavigate()
     // const {currency} =  useContext(CurrencyContext); 
     const {currency} = currencyStore();
 
@@ -40,6 +42,11 @@ function CoinTable(){
         )
     }
 
+
+    function handleCoinRedirect(id){
+        navigate(`/Details/${id}`);
+         
+    }
     console.log("Printing form the coin table")
     console.log(data);
     return(
@@ -71,7 +78,7 @@ function CoinTable(){
                     {/* now we can map on each of the coins that we have downloaded form the api call of the coingecko */}
                 {data && data.map((coin)=>{
                     return (
-                        <div key={coin.id} className="w-full bg-transparent text-white flex py-4 px-2 font-semibold items-center justify-between">
+                        <div onClick={()=>handleCoinRedirect(coin.id)} key={coin.id} className="w-full bg-transparent text-white flex py-4 px-2 font-semibold items-center justify-between cursor-pointer">
                             
                             <div className="flex items-center justify-start gap-3 basis-[35%]">
 
