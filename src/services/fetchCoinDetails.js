@@ -1,7 +1,7 @@
 import axiosInstance from "../helper/axisInstance"
 
 
-export async function fetchCoinData(id){
+export async function fetchCoinDetails(id){
     
     try{
         const response = await axiosInstance.get(`/coins/${id}`);
