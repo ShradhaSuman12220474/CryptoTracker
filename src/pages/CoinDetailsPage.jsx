@@ -4,6 +4,7 @@ import { fetchCoinDetails } from "../services/fetchCoinDetails";
 import { useEffect } from "react";
 import parse from 'html-react-parser'
 import currencyStore from '../state/store'
+import PageLoader from "../components/PageLoader/PageLoader";
 
 function CoinDetailsPage(){
 
@@ -22,7 +23,7 @@ function CoinDetailsPage(){
     // },[data]);
 
     if(isLoading){
-        return <div>Loading...</div>
+        return <PageLoader/>
     }
 
     if(isError){
@@ -33,7 +34,7 @@ function CoinDetailsPage(){
     return (
         <div className="flex flex-col md:flex-row">
 
-            <div className="md:w-1/3 w-full flex flex-col items-center mt-6 md:mt-0 border-r-2 border-grey-500">
+            <div className="md:w-1/2 w-full flex flex-col items-center mt-6 md:mt-0 border-r-2 border-grey-500">
 
                 <img 
                     src={coin?.image?.large}

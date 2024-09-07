@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import { CurrencyContext } from "../../context/currencyContext";
 import currencyStore from'../../state/store';
 import { useNavigate } from "react-router-dom";
+import PageLoader from "../PageLoader/PageLoader";
 
 function CoinTable(){
     // useEffect(()=>{
@@ -25,11 +26,7 @@ function CoinTable(){
     });
 
     if(isLoading){
-        return (
-            <div>
-                Loading...
-            </div>
-        )
+        return <PageLoader/>
     }
     
 
