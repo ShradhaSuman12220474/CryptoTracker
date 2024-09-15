@@ -18,7 +18,7 @@ function CoinTable(){
     // const {currency} =  useContext(CurrencyContext); 
     const {currency} = currencyStore();
 
-    const {data,isLoading,isError,error} = useQuery(['coins', page,currency], () => fetchCoinData(page,currency), {
+    const {data,isLoading,isError,error}  = useQuery(['coins', page,currency], () => fetchCoinData(page,currency), {
         // retry: 2,
         // retryDelay: 1000,
         cacheTime: 1000 * 60 * 2,
@@ -42,7 +42,7 @@ function CoinTable(){
 
     function handleCoinRedirect(id){
         navigate(`/Details/${id}`);
-         
+        
     }
     console.log("Printing form the coin table")
     console.log(data);

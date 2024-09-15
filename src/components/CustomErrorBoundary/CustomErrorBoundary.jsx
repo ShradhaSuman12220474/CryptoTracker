@@ -19,6 +19,7 @@ export default function CustomErrorBoundary({children}){
      FallbackComponent={CustomErrorBoudaryUI}
      onReset={()=>window.location.reload()}
      
+                    
      >
         {children}
 
