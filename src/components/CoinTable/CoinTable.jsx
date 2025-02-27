@@ -75,7 +75,7 @@ function CoinTable(){
                     {/* now we can map on each of the coins that we have downloaded form the api call of the coingecko */}
                 {data && data.map((coin)=>{
                     return (
-                        <div onClick={()=>handleCoinRedirect(coin.id)} key={coin.id} className="w-full bg-transparent text-white flex py-4 px-2 font-semibold items-center justify-between cursor-pointer">
+                        <div onClick={()=>handleCoinRedirect(coin.id)} key={coin.id} className="w-full bg-transparent text-black flex py-4 px-2 font-semibold items-center justify-between cursor-pointer">
                             
                             <div className="flex items-center justify-start gap-3 basis-[35%]">
 
