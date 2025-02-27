@@ -48,7 +48,7 @@ function CoinTable(){
     console.log(data);
     return(
         <div className="my-5 flex flex-col items-center justify-center gap-5 mx-auto w-[80vw]" >
-            <div className="w-full bg-yellow-400 text-black flex py-4 px-2 font-semibold items-center justify-center" >
+            <div className="w-full bg-yellow-400 text-zinc-900 flex py-4 px-2 font-semibold items-center justify-center" >
 
                 <div className="basis-[35%]">
                     Coin 
