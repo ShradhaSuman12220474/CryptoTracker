@@ -1,25 +1,32 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CurrencyContext } from "../../context/currencyContext";
 import currencyStore from '../../state/store';
 import { useNavigate } from "react-router-dom";
+import SearchBox from "../SearchBox/SearchBox";
 
 
 function Navbar(){
-
+    const [toggleDropDown,settoggleDropDown] = useState('true');
     // const {setCurrency} = useContext(CurrencyContext);
     const navigate = useNavigate();
     function gotToHome(){
         navigate('./');
     }
 
+    const [show, setShow] = useState(false);
+
+    function handleOnClick(){
+        console.log("Search Box clicked");
+        setShow(!show);
+    }
     const {setCurrency} = currencyStore();
     return (
        
         <>
         <div className="navbar bg-base-100">
         <div className="navbar-start">
-            <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+             { toggleDropDown &&  <div   className="dropdown">
+              <div   tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -33,20 +40,22 @@ function Navbar(){
                     d="M4 6h16M4 12h16M4 18h7" />
                 </svg>
             </div>
-            <ul
+             <ul
+                onClick = {()=> settoggleDropDown(!toggleDropDown)}
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                 <li onClick={()=>setCurrency('inr')}><a>INR</a></li>
                 <li onClick={()=>setCurrency('usd')}><a>USD</a></li>
                
             </ul>
-            </div>
+            </div>}
         </div>
         <div onClick={gotToHome} className="navbar-center">
             <a className="btn btn-ghost text-xl">CryptoTracker</a>
         </div>
         <div className="navbar-end">
-            <button className="btn btn-ghost btn-circle">
+            {show && <SearchBox/>}
+            <button className="btn btn-ghost btn-circle" onClick={handleOnClick}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -59,7 +68,9 @@ function Navbar(){
                 strokeWidth="2"
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
+
             </button>
+            
             <button className="btn btn-ghost btn-circle">
             <div className="indicator">
                 <svg
